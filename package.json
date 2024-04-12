@@ -1,0 +1,24 @@
+{
+  "name": "pass.in",
+  "version": "1.0.0",
+  "description": "Projeto criado na trilha focada em Node.JS durante a semana NLW Unite do Rocketseat.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaovictor1516/pass.in.git"
+  },
+  "keywords": [
+    "node.js",
+    "typescript",
+    "database"
+  ],
+  "author": "joaovictor1516",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joaovictor1516/pass.in/issues"
+  },
+  "homepage": "https://github.com/joaovictor1516/pass.in#readme"
+}
