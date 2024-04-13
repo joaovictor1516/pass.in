@@ -4,7 +4,7 @@
   "description": "Projeto criado na trilha focada em Node.JS durante a semana NLW Unite do Rocketseat.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx watch src/server.ts"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,10 @@
   "homepage": "https://github.com/joaovictor1516/pass.in#readme",
   "devDependencies": {
     "@types/node": "^20.12.7",
+    "tsx": "^4.7.2",
     "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "fastify": "^4.26.2"
   }
 }
