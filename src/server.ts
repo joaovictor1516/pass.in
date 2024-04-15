@@ -1,6 +1,7 @@
 import fastify from "fastify";
 import { z } from "zod";
 import { PrismaClient } from "@prisma/client";
+import { generateSlug } from "./utils/generateSlug";
 
 const app = fastify();
 const prisma = new PrismaClient({
@@ -23,14 +24,30 @@ app.post("/events", async (request, reply) => {
         maximumAttendees: z.number().int().positive().nullable()
     });
 
-    const data = creatEventSchema.parse(request.body); //verifica se os dados recebidos sao validos pelos campos de validacao criados no creatEventSchema.
+    const {
+        tittle,
+        details,
+        maximumAttendees
+    } = creatEventSchema.parse(request.body); //verifica se os dados recebidos sao validos pelos campos de validacao criados no creatEventSchema.
+
+    const slug = generateSlug(tittle);
+
+    const eventWithSameSlug = await prisma.event.findUnique({
+        where:{
+            slug,
+        }
+    });
+
+    if(eventWithSameSlug !== null){
+        throw new Error("Alread exist a event with this title.");
+    };
 
     const event = await prisma.event.create({
          data:{
-            tittle: data.tittle,
-            details: data.details,
-            maximumAttendees: data.maximumAttendees,
-            slug: new Date().toISOString()
+            tittle,
+            details,
+            maximumAttendees,
+            slug,
          }
     });
 
