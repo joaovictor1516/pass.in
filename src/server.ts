@@ -39,7 +39,7 @@ app.post("/events", async (request, reply) => {
     });
 
     if(eventWithSameSlug !== null){
-        throw new Error("Alread exist a event with this title.");
+        throw new Error("Already exist a event with this title.");
     };
 
     const event = await prisma.event.create({
