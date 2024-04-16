@@ -39,6 +39,8 @@ app.post("/events", async (request, reply) => {
     });
 
     if(eventWithSameSlug !== null){
+        reply.status(404);
+
         throw new Error("Already exist a event with this title.");
     };
 
