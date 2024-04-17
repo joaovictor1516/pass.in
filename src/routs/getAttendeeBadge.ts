@@ -15,7 +15,8 @@ export async function getAttendeeBadge(app: FastifyInstance){
                     200: z.object({
                         attendee: z.object({
                             name: z.string(),
-                            email: z.string().email()
+                            email: z.string().email(),
+                            eventTitle: z.string()
                         })
                     })
                 }
@@ -27,6 +28,11 @@ export async function getAttendeeBadge(app: FastifyInstance){
                 select: {
                     name: true,
                     email: true,
+                    event: {
+                        select: {
+                            tittle: true
+                        }
+                    }
                 },
                 where: {
                     id: attendeeId
@@ -40,7 +46,8 @@ export async function getAttendeeBadge(app: FastifyInstance){
             return reply.code(200).send({
                 attendee: {
                     name: attendee.name,
-                    email: attendee.email
+                    email: attendee.email,
+                    eventTitle: attendee.event.tittle
                 }
             });
         });
