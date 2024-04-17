@@ -26,7 +26,7 @@ export async function creatEvent(app: FastifyInstance){
                 tittle,
                 details,
                 maximumAttendees
-            } = (request.body);
+            } = request.body;
 
             const slug = generateSlug(tittle);
 

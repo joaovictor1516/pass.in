@@ -21,9 +21,9 @@ export async function registerForEvent(app: FastifyInstance){
                     })
                 }
             }
-        }, async (response, reply) => {
-            const {eventId} = response.params;
-            const {name, email} = response.body;
+        }, async (request, reply) => {
+            const {eventId} = request.params;
+            const {name, email} = request.body;
 
             const attendeeExists = await prisma.attendees.findUnique({
                 where: {
