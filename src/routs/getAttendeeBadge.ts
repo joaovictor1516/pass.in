@@ -40,7 +40,7 @@ export async function getAttendeeBadge(app: FastifyInstance){
             })
 
             if(attendee === null){
-                throw new Error("The attendee does`nt exist");
+                throw new Error("The attendee doesn`t exist.");
             };
 
             return reply.code(200).send({
