@@ -10,7 +10,15 @@ export async function getEvent(app: FastifyInstance){
             params: z.object({
                 eventId: z.string().uuid()
             }),
-            response: {}
+            response: {
+                200: z.object({
+                        id: z.string().uuid(),
+                        title: z.string().min(4),
+                        details: z.string().nullable(),
+                        maximumAttendees: z.number().int().positive().nullable(),
+                        attendeesAmount: z.number().int().positive()
+                })
+            }
         },
     }, async (request, reply) => {
         const {eventId} = request.params;
