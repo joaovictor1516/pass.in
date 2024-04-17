@@ -39,6 +39,14 @@ export async function getEvent(app: FastifyInstance){
             throw new Error("This event does not exist.");
         };
 
-        return reply.status(200).send({event});
+        return reply.status(200).send({
+            event: {
+                id: event.id,
+                title: event.tittle,
+                details: event.details,
+                maximumAttendees: event.maximumAttendees,
+                attendeesAmount: event._count.attendees
+            }
+        });
     });
 };
