@@ -13,7 +13,7 @@ export async function getAttendeeBadge(app: FastifyInstance){
                 }),
                 response: {
                     200: z.object({
-                        attendee: z.object({
+                        badge: z.object({
                             name: z.string(),
                             email: z.string().email(),
                             eventTitle: z.string(),
@@ -49,7 +49,7 @@ export async function getAttendeeBadge(app: FastifyInstance){
             const checkInUrl = new URL(`/attendees/${attendeeId}/check-in`, baseUrl);
 
             return reply.code(200).send({
-                attendee: {
+                badge: {
                     name: attendee.name,
                     email: attendee.email,
                     eventTitle: attendee.event.tittle,
