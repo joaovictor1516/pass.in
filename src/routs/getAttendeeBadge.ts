@@ -16,7 +16,8 @@ export async function getAttendeeBadge(app: FastifyInstance){
                         attendee: z.object({
                             name: z.string(),
                             email: z.string().email(),
-                            eventTitle: z.string()
+                            eventTitle: z.string(),
+                            checkingUrl: z.string().url()
                         })
                     })
                 }
@@ -43,11 +44,16 @@ export async function getAttendeeBadge(app: FastifyInstance){
                 throw new Error("The attendee doesn`t exist.");
             };
 
+            const baseUrl = `${request.protocol}://${request.hostname}`;
+
+            const checkInUrl = new URL(`/attendees/${attendeeId}/check-in`, baseUrl);
+
             return reply.code(200).send({
                 attendee: {
                     name: attendee.name,
                     email: attendee.email,
-                    eventTitle: attendee.event.tittle
+                    eventTitle: attendee.event.tittle,
+                    checkingUrl: checkInUrl.toString()
                 }
             });
         });
