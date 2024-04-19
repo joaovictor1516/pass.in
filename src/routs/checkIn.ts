@@ -6,7 +6,7 @@ import { prisma } from "../lib/prisma";
 export async function checkIn(app: FastifyInstance){
     app
         .withTypeProvider<ZodTypeProvider>()
-        .get("attendee/:attendeeId/check-in", {
+        .get("/attendee/:attendeeId/check-in", {
             schema: {
                 params: z.object({
                     attendeeId: z.coerce.number().int()
@@ -26,7 +26,7 @@ export async function checkIn(app: FastifyInstance){
             }
            });
 
-           if(checkIn !== undefined){
+           if(checkIn !== null){
                 reply.code(404);
                 throw new Error("Attendee already checked in.");
            };
