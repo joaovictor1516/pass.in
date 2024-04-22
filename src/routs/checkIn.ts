@@ -6,7 +6,7 @@ import { z } from "zod";
 export async function checkIn(app: FastifyInstance){
     app
         .withTypeProvider<ZodTypeProvider>()
-        .get("/attendee/:attendeeId/check-in", {
+        .get("/attendees/:attendeeId/check-in", {
             schema: {
                 params: z.object({
                     attendeeId: z.coerce.number().int()
