@@ -15,7 +15,19 @@ export async function getEventAttendees(app: FastifyInstance){
                     query: z.string().nullish(),//o nullish informa que pode ser null ou undefined
                     pageIndex: z.string().nullish().default("0").transform(Number)
                 }),
-                response: {}
+                response: {
+                    200: z.object({
+                        attendees: z.array(
+                            z.object({
+                                id: z.number(),
+                                name: z.string(),
+                                email: z.string().email(),
+                                createdAt: z.date(),
+                                checkedInAt: z.date().nullable()
+                            })
+                        )
+                    })
+                }
             }
         }, async (request, reply) => {
             const { eventId } = request.params;
