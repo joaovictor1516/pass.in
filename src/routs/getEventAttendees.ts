@@ -12,7 +12,7 @@ export async function getEventAttendees(app: FastifyInstance){
                     eventId: z.string().uuid()
                 }),
                 querystring: z.object({
-                    query: z.string().nullish(),//o nullish informa que pode ser null ou undefined
+                    query: z.string().nullish(),
                     pageIndex: z.string().nullish().default("0").transform(Number)
                 }),
                 response: {
