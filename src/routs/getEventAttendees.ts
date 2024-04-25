@@ -42,7 +42,10 @@ export async function getEventAttendees(app: FastifyInstance){
                     eventId
                 },
                 take: 10,
-                skip: pageIndex * 10
+                skip: pageIndex * 10,
+                orderBy: {
+                    createdAt: "desc"
+                }
             });
 
             return reply.status(200).send({ 
