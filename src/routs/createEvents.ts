@@ -9,6 +9,8 @@ export async function creatEvent(app: FastifyInstance){
        .withTypeProvider<ZodTypeProvider>()
        .post("/events", {
             schema: {
+                summary: "Create an event.",
+                tags: ["event"],
                 body: z.object({
                     tittle: z.string().min(4),
                     details: z.string().nullable(),

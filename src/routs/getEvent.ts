@@ -8,6 +8,8 @@ export async function getEvent(app: FastifyInstance){
         .withTypeProvider<ZodTypeProvider>()
         .get("/events/:eventId", {
             schema: {
+                summary: "Consult an event datas.",
+                tags: ["event"],
                 params: z.object({
                     eventId: z.string().uuid()
                 }),
