@@ -17,6 +17,9 @@
   ],
   "author": "joaovictor1516",
   "license": "MIT",
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
   "bugs": {
     "url": "https://github.com/joaovictor1516/pass.in/issues"
   },
