@@ -3,6 +3,8 @@ import { FastifyInstance } from "fastify";
 import { prisma } from "../lib/prisma";
 import { z } from "zod";
 
+import { BadRequest } from "./_errors/badRequest";
+
 export async function getAttendeeBadge(app: FastifyInstance){
     app
         .withTypeProvider<ZodTypeProvider>()
@@ -43,7 +45,7 @@ export async function getAttendeeBadge(app: FastifyInstance){
             })
 
             if(attendee === null){
-                throw new Error("The attendee doesn`t exist.");
+                throw new BadRequest("The attendee doesn`t exist.");
             };
 
             const baseUrl = `${request.protocol}://${request.hostname}`;

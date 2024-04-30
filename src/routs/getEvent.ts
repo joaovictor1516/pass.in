@@ -3,6 +3,8 @@ import { FastifyInstance } from "fastify";
 import { prisma } from "../lib/prisma";
 import { z } from "zod";
 
+import { BadRequest } from "./_errors/badRequest";
+
 export async function getEvent(app: FastifyInstance){
     app
         .withTypeProvider<ZodTypeProvider>()
@@ -47,9 +49,7 @@ export async function getEvent(app: FastifyInstance){
             });
 
             if(event === null){
-                reply.status(404);
-
-                throw new Error("This event does not exist.");
+                throw new BadRequest("This event does not exist.");
             };
 
             return reply.status(200).send({

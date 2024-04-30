@@ -4,6 +4,8 @@ import { FastifyInstance } from "fastify";
 import { prisma } from "../lib/prisma";
 import { z } from "zod";
 
+import { BadRequest } from "./_errors/badRequest";
+
 export async function creatEvent(app: FastifyInstance){
     app
        .withTypeProvider<ZodTypeProvider>()
@@ -39,9 +41,7 @@ export async function creatEvent(app: FastifyInstance){
             });
 
             if(eventWithSameSlug !== null){
-                reply.status(404);
-
-                throw new Error("Already exist a event with this title.");
+                throw new BadRequest("Already exist a event with this title.");
             };
 
             const event = await prisma.event.create({
