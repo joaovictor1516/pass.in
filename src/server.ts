@@ -35,8 +35,10 @@ app.setSerializerCompiler(serializerCompiler);
 app.register(checkIn);
 app.register(getEvent);
 app.register(getAttendeeBadge);
-app.register(registerForEvent);
 app.register(getEventAttendees);
+
+app.register(creatEvent);
+app.register(registerForEvent);
 
 app.listen({port: 3333}).then(() => {
     console.log("HTTP server running");
