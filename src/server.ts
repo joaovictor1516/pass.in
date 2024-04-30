@@ -5,6 +5,8 @@ import fastifySwaggerUi from "@fastify/swagger-ui";
 import fastifySwagger from "@fastify/swagger";
 import fastify from "fastify";
 
+import { errorHandler } from "./errorHandler";
+
 import { getEventAttendees } from "./routs/getEventAttendees";
 import { getAttendeeBadge } from "./routs/getAttendeeBadge";
 import { getEvent } from "./routs/getEvent";
@@ -39,6 +41,8 @@ app.register(getEventAttendees);
 
 app.register(creatEvent);
 app.register(registerForEvent);
+
+app.setErrorHandler(errorHandler)
 
 app.listen({port: 3333}).then(() => {
     console.log("HTTP server running");
