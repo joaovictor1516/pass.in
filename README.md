@@ -4,6 +4,7 @@ O pass.in é uma aplicação focada em gestão de participantes de eventos prese
 - Node.JS;
 - Prisma;
 - Fastify;
+- Fastify Swagger;
 - Zod;
 ## Como usar a aplicação
 - Para instalar as dependencias:
