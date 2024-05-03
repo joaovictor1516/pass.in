@@ -14,9 +14,9 @@ export async function creatEvent(app: FastifyInstance){
                 summary: "Create an event.",
                 tags: ["event"],
                 body: z.object({
-                    tittle: z.string().min(4),
-                    details: z.string().nullable(),
-                    maximumAttendees: z.number().int().positive().nullable()
+                    tittle: z.string({invalid_type_error: "The title need be a text."}).min(4),
+                    details: z.string({invalid_type_error: "The detail need be a text."}).nullable(),
+                    maximumAttendees: z.number({invalid_type_error: "The maximum attendees need be a number."}).int().positive().nullable()
                 }),
                 response: {
                     201: z.object({
@@ -46,10 +46,10 @@ export async function creatEvent(app: FastifyInstance){
 
             const event = await prisma.event.create({
                 data:{
+                    slug,
                     tittle,
                     details,
-                    maximumAttendees,
-                    slug,
+                    maximumAttendees
                 }
             });
 
