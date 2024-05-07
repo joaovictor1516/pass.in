@@ -13,11 +13,11 @@ export async function registerForEvent(app: FastifyInstance){
                 summary: "Check all participant datas.",
                 tags: ["event"],
                 body: z.object({
-                    name: z.string().min(5),
-                    email: z.string().email(),
+                    name: z.string({invalid_type_error: "The attendee's name need be a text."}).min(5),
+                    email: z.string({invalid_type_error: "The attendee's name need be a email type."}).email(),
                 }),
                 params: z.object({
-                    eventId: z.string().uuid()
+                    eventId: z.string({invalid_type_error: "Invalid event identification."}).uuid()
                 }),
                 response: {
                     201: z.object({

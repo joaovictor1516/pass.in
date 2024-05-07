@@ -11,7 +11,7 @@ export async function getEventAttendees(app: FastifyInstance){
                 summary: "Check all participants in an event.",
                 tags: ["event"],
                 params: z.object({
-                    eventId: z.string().uuid()
+                    eventId: z.string({invalid_type_error: "Invalid event identificator."}).uuid()
                 }),
                 querystring: z.object({
                     query: z.string().nullish(),

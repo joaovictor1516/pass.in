@@ -13,7 +13,7 @@ export async function getEvent(app: FastifyInstance){
                 summary: "Consult an event datas.",
                 tags: ["event"],
                 params: z.object({
-                    eventId: z.string().uuid()
+                    eventId: z.string({invalid_type_error: "Invalid event identificator."}).uuid()
                 }),
                 response: {
                     200: z.object({
