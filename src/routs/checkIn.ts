@@ -13,7 +13,7 @@ export async function checkIn(app: FastifyInstance){
                 summary: "Check in an attendee.",
                 tags: ["attendee"],
                 params: z.object({
-                    attendeeId: z.coerce.number().int()
+                    attendeeId: z.coerce.number({invalid_type_error: "Invalid attendee identificator."}).int()
                 }),
                 response:{
                     201: z.object({
