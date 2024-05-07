@@ -13,7 +13,7 @@ export async function getAttendeeBadge(app: FastifyInstance){
                 summary: "Add an attendee at an event.",
                 tags: ["attendee"],
                 params: z.object({
-                    attendeeId: z.coerce.number().int()
+                    attendeeId: z.coerce.number({invalid_type_error: "Invalid attendee identificator."}).int()
                 }),
                 response: {
                     200: z.object({
