@@ -1,14 +1,14 @@
 import { serializerCompiler, validatorCompiler, jsonSchemaTransform } from "fastify-type-provider-zod";
-import { registerForEvent } from "./routs/registerForEvent";
-import { creatEvent } from "./routs/createEvents";
 import fastifySwaggerUi from "@fastify/swagger-ui";
 import fastifySwagger from "@fastify/swagger";
 import fastify from "fastify";
 
 import { errorHandler } from "./errorHandler";
 
+import { registerForEvent } from "./routs/registerForEvent";
 import { getEventAttendees } from "./routs/getEventAttendees";
 import { getAttendeeBadge } from "./routs/getAttendeeBadge";
+import { creatEvent } from "./routs/createEvents";
 import { getEvent } from "./routs/getEvent";
 import { checkIn } from "./routs/checkIn";
 
