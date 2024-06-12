@@ -31,18 +31,17 @@ app.register(fastifySwaggerUi, {
     routePrefix: "/docs"
 });
 
-app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
+app.setValidatorCompiler(validatorCompiler);
 
-app.register(checkIn);
-app.register(getEvent);
-app.register(getAttendeeBadge);
 app.register(getEventAttendees);
-
-app.register(creatEvent);
+app.register(getAttendeeBadge);
 app.register(registerForEvent);
+app.register(creatEvent);
+app.register(getEvent);
+app.register(checkIn);
 
-app.setErrorHandler(errorHandler)
+app.setErrorHandler(errorHandler);
 
 app.listen({port: 3333}).then(() => {
     console.log("HTTP server running");
